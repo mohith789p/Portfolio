@@ -15,13 +15,13 @@ export default function NotFound() {
         transition={{ duration: 0.5 }}
         className="max-w-md"
       >
-        <div className="w-64 h-64 mx-auto mb-8">
+        <div className="w-48 h-48 sm:w-64 sm:h-64 mx-auto mb-8">
           <Lottie animationData={notFoundAnimation} loop={true} />
         </div>
         
-        <h1 className="text-4xl font-bold mb-4 gradient-text">Page Not Found</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4 gradient-text">Page Not Found</h1>
         
-        <p className="text-muted-foreground mb-8">
+        <p className="text-sm sm:text-base text-muted-foreground mb-8">
           Oops! The page you're looking for doesn't exist or has been moved.
         </p>
         

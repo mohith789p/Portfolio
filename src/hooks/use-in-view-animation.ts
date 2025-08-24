@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { useInView, useAnimation, TargetAndTransition } from 'framer-motion';
+import { useEffect, useRef } from "react";
+import { useInView, useAnimation, TargetAndTransition } from "framer-motion";
 
 interface UseInViewAnimationProps {
   threshold?: number;

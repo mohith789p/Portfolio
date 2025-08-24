@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const socialLinks = [
   {
-    name: 'GitHub',
-    href: 'https://github.com/mohith789p',
+    name: "GitHub",
+    href: "https://github.com/mohith789p",
     icon: Github,
   },
   {
-    name: 'LinkedIn',
-    href: 'https://linkedin.com/in/potnuru-mohith',
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/potnuru-mohith",
     icon: Linkedin,
   },
   {
-    name: 'Twitter',
-    href: 'https://twitter.com/mohith321p',
+    name: "Twitter",
+    href: "https://twitter.com/mohith321p",
     icon: Twitter,
   },
   {
-    name: 'Email',
-    href: 'mailto:mohith321p@gmail.com',
+    name: "Email",
+    href: "mailto:mohith321p@gmail.com",
     icon: Mail,
   },
 ];
@@ -60,7 +60,7 @@ export default function Footer() {
                   transition={{ delay: index * 0.1 }}
                   aria-label={social.name}
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-4 w-4 md:h-5 md:w-5" />
                 </motion.a>
               );
             })}
@@ -68,9 +68,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-4 border-t border-border/50 text-center text-sm text-muted-foreground">
-          <p>
-            © {currentYear} Mohith. All rights reserved.
-          </p>
+          <p>© {currentYear} Mohith. All rights reserved.</p>
           <p className="mt-1">
             Built with Next.js, Tailwind CSS, and Framer Motion.
           </p>

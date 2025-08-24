@@ -25,7 +25,7 @@ export default function HeroSection() {
         <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-accent/20 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 py-16 lg:py-0">
         {/* Text Content */}
         <motion.div
           className="flex-1 text-center lg:text-left"
@@ -43,29 +43,31 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             Hi, I'm <span className="gradient-text">Potnuru Mohith</span>
             <br />
-            <span className="text-3xl md:text-4xl lg:text-5xl">
+            <span className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
               AI Enthusiast
             </span>
           </motion.h1>
 
           <motion.p
-            className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
+            className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-           Software Developer | AI & Generative AI Enthusiast | Python, OpenCV & NVIDIA Jetson Nano | Embedded Systems & IoT | Skilled in Java (OOP), Node.js, Next.js, Express.js & Firebase
+            Software Developer | AI & Generative AI Enthusiast | Python, OpenCV
+            & NVIDIA Jetson Nano | Embedded Systems & IoT | Skilled in Java
+            (OOP), Node.js, Next.js, Express.js & Firebase
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap gap-4 justify-center lg:justify-start"
+            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -84,7 +86,11 @@ export default function HeroSection() {
             </Button>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={controls} className="mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={controls}
+            className="mt-12"
+          >
             <div className="flex space-x-4">
               <a
                 href="https://github.com/mohith789p"
@@ -140,12 +146,12 @@ export default function HeroSection() {
 
         {/* Hero Image/Animation */}
         <motion.div
-          className="flex-1 w-full max-w-md mx-auto"
+          className="flex-1 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto mt-8 lg:mt-0"
           initial={{ opacity: 0, y: 50 }}
           animate={controls}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <div className="relative w-full aspect-square">
+          <div className="relative w-full aspect-square max-w-[400px] sm:max-w-[450px] md:max-w-[450px] lg:max-w-[450px] mx-auto">
             {/* Blue Glow */}
             <div className="absolute inset-0 rounded-full bg-blue-500 blur-3xl opacity-40 z-0" />
 
@@ -155,6 +161,7 @@ export default function HeroSection() {
               alt="Profile Picture"
               fill
               className="rounded-full object-cover shadow-xl z-10"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority
             />
           </div>

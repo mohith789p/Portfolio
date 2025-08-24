@@ -1,43 +1,51 @@
-'use client';
+"use client";
 
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { z } from 'zod';
-import { useInViewAnimation } from '@/hooks/use-in-view-animation';
-import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { z } from "zod";
+import { useInViewAnimation } from "@/hooks/use-in-view-animation";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  subject: z.string().min(5, { message: 'Subject must be at least 5 characters.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  subject: z
+    .string()
+    .min(5, { message: "Subject must be at least 5 characters." }),
+  message: z
+    .string()
+    .min(10, { message: "Message must be at least 10 characters." }),
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactSection() {
   const [formValues, setFormValues] = useState<ContactFormValues>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormValues, string>>>({});
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof ContactFormValues, string>>
+  >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  
+
   const { ref, controls, isInView } = useInViewAnimation({
     threshold: 0.2,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
-    
+
     // Clear error when user starts typing
     if (errors[name as keyof ContactFormValues]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -46,32 +54,32 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       // Validate form
       contactFormSchema.parse(formValues);
-      
+
       // Clear errors
       setErrors({});
-      
+
       // Submit form
       setIsSubmitting(true);
-      
+
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+
       // Show success message
       toast({
-        title: 'Message sent!',
-        description: 'Thank you for your message. I will get back to you soon.',
+        title: "Message sent!",
+        description: "Thank you for your message. I will get back to you soon.",
       });
-      
+
       // Reset form
       setFormValues({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -92,25 +100,23 @@ export default function ContactSection() {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      value: 'mohith321p@gmail.com',
-      href: 'mailto:mohith321p@gmail.com',
+      title: "Email",
+      value: "mohith321p@gmail.com",
+      href: "mailto:mohith321p@gmail.com",
     },
     {
       icon: Phone,
-      title: 'Phone',
-      value: '+91 8519904179',
-      href: 'tel:+918519904179',
+      title: "Phone",
+      value: "+91 8519904179",
+      href: "tel:+918519904179",
     },
     {
       icon: MapPin,
-      title: 'Location',
-      value: 'Bhimavaram, India',
-      href: 'https://maps.google.com/?q=Bhimavaram',
+      title: "Location",
+      value: "Bhimavaram, India",
+      href: "https://maps.google.com/?q=Bhimavaram",
     },
   ];
-
-
 
   return (
     <section className="container mx-auto px-4 py-16" ref={ref}>
@@ -118,31 +124,31 @@ export default function ContactSection() {
         initial={{ opacity: 0, y: 50 }}
         animate={controls}
         transition={{ duration: 0.5 }}
-        className="text-center mb-16"
+        className="text-center mb-12 md:mb-16"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">
           Get In <span className="gradient-text">Touch</span>
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
           Have a project in mind or want to collaborate? Feel free to reach out!
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         {/* Contact Form */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={controls}
-          className="glass p-8 rounded-lg"
+          className="glass p-6 md:p-8 rounded-lg"
         >
-          <motion.h3 
+          <motion.h3
             initial={{ opacity: 0, y: 50 }}
             animate={controls}
-            className="text-2xl font-bold mb-6"
+            className="text-xl md:text-2xl font-bold mb-4 md:mb-6"
           >
             Send a Message
           </motion.h3>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <motion.div initial={{ opacity: 0, y: 50 }} animate={controls}>
               <Input
@@ -151,13 +157,13 @@ export default function ContactSection() {
                 placeholder="Your Name"
                 value={formValues.name}
                 onChange={handleChange}
-                className={errors.name ? 'border-destructive' : ''}
+                className={errors.name ? "border-destructive" : ""}
               />
               {errors.name && (
                 <p className="text-sm text-destructive mt-1">{errors.name}</p>
               )}
             </motion.div>
-            
+
             <motion.div initial={{ opacity: 0, y: 50 }} animate={controls}>
               <Input
                 type="email"
@@ -165,13 +171,13 @@ export default function ContactSection() {
                 placeholder="Your Email"
                 value={formValues.email}
                 onChange={handleChange}
-                className={errors.email ? 'border-destructive' : ''}
+                className={errors.email ? "border-destructive" : ""}
               />
               {errors.email && (
                 <p className="text-sm text-destructive mt-1">{errors.email}</p>
               )}
             </motion.div>
-            
+
             <motion.div initial={{ opacity: 0, y: 50 }} animate={controls}>
               <Input
                 type="text"
@@ -179,13 +185,15 @@ export default function ContactSection() {
                 placeholder="Subject"
                 value={formValues.subject}
                 onChange={handleChange}
-                className={errors.subject ? 'border-destructive' : ''}
+                className={errors.subject ? "border-destructive" : ""}
               />
               {errors.subject && (
-                <p className="text-sm text-destructive mt-1">{errors.subject}</p>
+                <p className="text-sm text-destructive mt-1">
+                  {errors.subject}
+                </p>
               )}
             </motion.div>
-            
+
             <motion.div initial={{ opacity: 0, y: 50 }} animate={controls}>
               <Textarea
                 name="message"
@@ -193,17 +201,19 @@ export default function ContactSection() {
                 rows={5}
                 value={formValues.message}
                 onChange={handleChange}
-                className={errors.message ? 'border-destructive' : ''}
+                className={errors.message ? "border-destructive" : ""}
               />
               {errors.message && (
-                <p className="text-sm text-destructive mt-1">{errors.message}</p>
+                <p className="text-sm text-destructive mt-1">
+                  {errors.message}
+                </p>
               )}
             </motion.div>
-            
+
             <motion.div initial={{ opacity: 0, y: 50 }} animate={controls}>
-              <Button 
-                type="submit" 
-                className="w-full" 
+              <Button
+                type="submit"
+                className="w-full"
                 size="lg"
                 disabled={isSubmitting}
               >
@@ -230,42 +240,54 @@ export default function ContactSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="glass p-8 rounded-lg space-y-6"
         >
-          <motion.h3 
+          <motion.h3
             initial={{ opacity: 0, y: 50 }}
             animate={controls}
             className="text-2xl font-bold mb-6"
           >
             Contact Information
           </motion.h3>
-          
-          <div className="space-y-6">
+
+          <div className="space-y-6 md:space-y-8">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
                 <motion.a
-                    key={info.title}
-                    href={info.href}
-                    target={info.title === 'Location' ? '_blank' : undefined}
-                    rel={info.title === 'Location' ? 'noopener noreferrer' : undefined}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={controls}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                    custom={index}
-                    className="flex items-start p-4 glass rounded-lg hover:bg-primary/5 transition-colors"
-                  >
+                  key={info.title}
+                  href={info.href}
+                  target={info.title === "Location" ? "_blank" : undefined}
+                  rel={
+                    info.title === "Location"
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={controls}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  custom={index}
+                  className="flex items-start p-4 glass rounded-lg hover:bg-primary/5 transition-colors"
+                >
                   <div className="p-3 rounded-full bg-primary/10 text-primary mr-4">
                     <Icon className="h-6 w-6" />
                   </div>
                   <div>
-                    <h4 className="font-medium">{info.title}</h4>
-                    <p className="text-muted-foreground">{info.value}</p>
+                    <p className="text-base md:text-lg font-semibold">
+                      {info.title}
+                    </p>
+                    <p className="text-muted-foreground text-xs md:text-sm">
+                      {info.value}
+                    </p>
                   </div>
                 </motion.a>
               );
             })}
           </div>
-          
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={controls} className="mt-12">
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={controls}
+            className="mt-12"
+          >
             <h4 className="text-xl font-bold mb-4">Follow Me</h4>
             <div className="flex space-x-4">
               <a

@@ -22,27 +22,26 @@ const timelineItems: TimelineItem[] = [
     icon: Briefcase,
   },
   {
-  year: "2025",
-  title: "AI & ML Virtual Internship",
-  description:
-    "Gained hands-on experience in AI and machine learning concepts, working on practical projects to enhance algorithmic understanding.",
-  icon: Briefcase,
-},
-{
-  year: "2024",
-  title: "Android Development Virtual Internship",
-  description:
-    "Developed Android applications, gaining practical experience in mobile app development and UI/UX design principles.",
-  icon: Briefcase,
-},
-{
-  year: "2023",
-  title: "Bachelor of Computer Science",
-  description:
-    "Started Bachelor’s program (2023–2027 batch), focusing on software development, Python, and AI fundamentals.",
-  icon: GraduationCap,
-},
-
+    year: "2025",
+    title: "AI & ML Virtual Internship",
+    description:
+      "Gained hands-on experience in AI and machine learning concepts, working on practical projects to enhance algorithmic understanding.",
+    icon: Briefcase,
+  },
+  {
+    year: "2024",
+    title: "Android Development Virtual Internship",
+    description:
+      "Developed Android applications, gaining practical experience in mobile app development and UI/UX design principles.",
+    icon: Briefcase,
+  },
+  {
+    year: "2023",
+    title: "Bachelor of Computer Science",
+    description:
+      "Started Bachelor’s program (2023–2027 batch), focusing on software development, Python, and AI fundamentals.",
+    icon: GraduationCap,
+  },
 ];
 
 export default function AboutSection() {
@@ -81,7 +80,7 @@ export default function AboutSection() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ml-16">
         {/* Profile Image and Bio */}
         <motion.div
           ref={imageRef}
@@ -100,13 +99,20 @@ export default function AboutSection() {
             />
           </div>
 
-          <div>
-            <h3 className="text-2xl font-bold mb-2">Potnuru Mohith</h3>
-            <p className="text-primary font-medium mb-4">
+          <div className="px-2 sm:px-0 max-w-2xl mx-auto lg:mx-0 text-left">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">
+              Potnuru Mohith
+            </h3>
+            <p className="text-primary font-medium mb-3 sm:mb-4 text-base sm:text-lg">
               Frontend Developer & AI Enthusiast
             </p>
-            <p className="text-muted-foreground">
-              Motivated Computer Science student with strong skills in full-stack development using Next.js, Express.js, and Firebase. Experienced in building web applications and integrating AI features. Passionate about learning AI and Gen AI, with a goal to apply modern technologies to create intelligent, impactful, and scalable solutions.
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              Motivated Computer Science student with strong skills in
+              full-stack development using Next.js, Express.js, and Firebase.
+              Experienced in building web applications and integrating AI
+              features. Passionate about learning AI and Gen AI, with a goal to
+              apply modern technologies to create intelligent, impactful, and
+              scalable solutions.
             </p>
           </div>
 

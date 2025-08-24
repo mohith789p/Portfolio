@@ -73,6 +73,8 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem); /* Fluid body font size */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
   }
 }
 
